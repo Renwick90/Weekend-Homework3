@@ -8,13 +8,14 @@ runner = SqlRunner.new( {dbname: 'dodgeball', host: 'localhost'},)
 
 team1 = Team.new({'name' => 'Raith Rovers',}, runner)
 
-
 team2 = Team.new({'name' => 'Brechin City',}, runner)
+
 team1.save()
 
 team2.save()
-binding.pry
 
+binding.pry
+nil
 
 
 
