@@ -19,4 +19,25 @@ class Match
    match_data = @runner.run(sql)
    @id = match_data.first['id'].to_i
   end
+
+  def self.all(runner)
+    sql = "SELECT * FROM matches"
+    return match.map_items(sql,runner)
+  end
+
+  def self.delete_all(runner)
+    sql = "DELETE FROM matches"
+    runner.run(sql)
+  end
+
+  def self.map_items(sql, runner)
+    matches = runner.run(sql)
+    result = matches.map {|match| Match.new(team, runner)}
+    return result
+  end
+
+  def self.map_item(sql, runner)
+    result = Match.map_items(sql, runner)
+    return result.first
+  end
 end
